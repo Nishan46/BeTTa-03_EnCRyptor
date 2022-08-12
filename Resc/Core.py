@@ -1,3 +1,4 @@
+import pyperclip
 from Resc import Crypts as Cryptor
 from rich.progress import track
 from time import sleep
@@ -9,7 +10,7 @@ class ENCRYPT:
         self.__index = None
         self.__Binary_String = ""
         self.__Decimal_List = [64,32,16,8,4,2,1]
-        self.__Finaly = ""
+        self.Finaly = ""
         self.__symbols = Cryptor.Get()
         self.__symbols_length = (len(self.__symbols) - 1)
 
@@ -32,12 +33,13 @@ class ENCRYPT:
         return self.__Binary_String
 
     def Encript(self):       
-        self.__Finaly = ''
+        self.Finaly = ''
         for steps in track(range((len(self.text))), description="[green bold] [DONE] --  "):
             self.__index = ENCRYPT.__Get_Code(self,self.__symbols.index(self.text[steps]))
-            self.__Finaly += ENCRYPT.__Get_Binary(self)
-            sleep(0.01)         
-        return self.__Finaly 
+            self.Finaly += ENCRYPT.__Get_Binary(self)
+            sleep(0.01)
+        pyperclip.copy(self.Finaly)
+        return self.Finaly 
 
 class DECRYPT:
 
@@ -65,7 +67,6 @@ class DECRYPT:
         DECRYPT.Get_Decimal(self)
         return self.__Peases
 
-
     def Get_Decimal(self):
         for items in self.__Peases:
             count = 0
@@ -79,7 +80,6 @@ class DECRYPT:
             self.__Decrypt_List.append(decimal_int)
         return self.__Decrypt_List
         
-
     def __Get_Code(self,key):
         Codes = (self.__symbols_length - key)
         return Codes        
@@ -87,24 +87,15 @@ class DECRYPT:
     def Decrypt(self):
         DECRYPT.Cutting(self)
         self.__Finaly = ''
-        for steps in track(range(len(self.__Decrypt_List)-1), description="[green bold] [DONE] --  "):     
-            self.__letter = self.__symbols[DECRYPT.__Get_Code(self,self.__Decrypt_List[steps])]
+        for items in self.__Decrypt_List:     
+            self.__letter = self.__symbols[DECRYPT.__Get_Code(self,items)]
             self.__Finaly += self.__letter
             sleep(0.01)
         return self.__Finaly
-        
 
 
-
-
-
-
-# def Decrypt(self):
-#         DECRYPT.Cutting(self)
-#         sleep(1)
-#         DECRYPT.Get_Decimal(self)
-#         sleep(1)
-#         for Decimals in self.__Decrypt_List:
-#             self.__letter = self.__symbols[DECRYPT.__Get_Code(self,Decimals)]
-#             self.__Finaly += self.__letter
-#         return self.__Finaly
+##for steps in track(range(len(self.__Decrypt_List)-1), description="[green bold] [DONE] --  "):     
+##            self.__letter = self.__symbols[DECRYPT.__Get_Code(self,self.__Decrypt_List[steps])]
+##            self.__Finaly += self.__letter
+##            sleep(0.01)
+##        return self.__Finaly

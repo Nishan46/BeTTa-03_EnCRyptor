@@ -1,3 +1,5 @@
+
+
 from rich.prompt import Prompt
 from rich.console import Console
 from rich.text import Text
@@ -8,6 +10,9 @@ console = Console()
 
 
 class St:
+
+
+
     def Consols(text, style="", colours="White", si=0, li=0):
         text = Text(text)
         if li == 0:

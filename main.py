@@ -17,6 +17,7 @@ try:
         EnCriptor = Core.ENCRYPT(name)
         styles.pansInfo("blue bold",EnCriptor)
         styles.pans("purple bold","Key Genarated ! ","green bold",EnCriptor.Encript())
+        print("[green bold]copied to clipboard")
         
     else:
         name = str(styles.Input("Enter Key there "))
@@ -24,11 +25,9 @@ try:
         styles.pansInfo("blue bold",Decryptor)
         styles.pans("purple bold","Key Restored ! ","green bold",Decryptor.Decrypt())
 
-
 except KeyboardInterrupt:
     print("[red bold][Program] [Exited][/red bold]")
         
-
 except ValueError as e:
     print(f"\n[red bold]Yor Text is Not Supported !!!![/red bold]\n\n")
     styles.pansInfo("yellow bold",f"[ERROR TYPE]\n\n{e}")
