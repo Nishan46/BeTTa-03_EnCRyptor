@@ -1,4 +1,3 @@
-import pyperclip
 from Resc import Crypts as Cryptor
 from rich.progress import track
 from time import sleep
@@ -38,7 +37,6 @@ class ENCRYPT:
             self.__index = ENCRYPT.__Get_Code(self,self.__symbols.index(self.text[steps]))
             self.Finaly += ENCRYPT.__Get_Binary(self)
             sleep(0.01)
-        pyperclip.copy(self.Finaly)
         return self.Finaly 
 
 class DECRYPT:

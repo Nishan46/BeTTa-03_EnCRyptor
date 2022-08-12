@@ -1,8 +1,9 @@
-from distutils import core
 from time import sleep
 from Resc import Core as Core , styles
 from Resc.styles import St as styles
 from rich import print
+
+import pyperclip
 
 try:
 
@@ -17,8 +18,8 @@ try:
         EnCriptor = Core.ENCRYPT(name)
         styles.pansInfo("blue bold",EnCriptor)
         styles.pans("purple bold","Key Genarated ! ","green bold",EnCriptor.Encript())
+        pyperclip.copy(EnCriptor.Finaly)
         print("[green bold]copied to clipboard")
-        
     else:
         name = str(styles.Input("Enter Key there "))
         Decryptor = Core.DECRYPT(name)
