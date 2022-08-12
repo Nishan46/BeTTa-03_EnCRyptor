@@ -5,6 +5,7 @@ uppers = []
 
 
 def Get():
+    uppers = []
     for i in lowers:
         uppers.append(i.upper())
     result = lowers + uppers + numberss + symbols
